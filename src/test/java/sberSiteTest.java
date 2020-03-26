@@ -26,13 +26,45 @@ public class sberSiteTest {
     @Test
     public void test() {
         driver.get(url);
-        driver.findElement(By.xpath("//a[text()='Страхование']")).click();
+
+        //driver.findElement(By.xpath("//a[text()='Страхование']")).click();
+        driver.findElement(By.xpath("//span[text()='Страхование']")).click();
+        driver.findElement(By.xpath("//ul[@class='lg-menu__sub-list']//a[text()='Страхование путешественников']")).click();
         Wait<WebDriver> wait = new WebDriverWait(driver, 5, 15000);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(""))));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[contains(@class,'top_40')]//h2[text()='Страхование путешественников']"))));
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.xpath("//b[text()='Оформить онлайн']")).click();
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//h2[text()='Страхование путешественников']"))));
+
+        driver.findElement(By.xpath("//h3[contains(text(),'Минимал')]")).click();
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//button[text()='Оформить']")))).click();
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//legend[contains(text(),'Застрахованные')]"))));
+        driver.findElement(By.id("surname_vzr_ins_0")).sendKeys("Ivan");
+        fillField(By.id("surname_vzr_ins_0"),"Ivanushka");
+        
+
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @After
     public void tearDown() {
         driver.quit();
+    }
+
+    public void fillField(By by ,String val)
+    {
+        driver.findElement(by).clear();
+        driver.findElement(by).sendKeys(val);
     }
 }
