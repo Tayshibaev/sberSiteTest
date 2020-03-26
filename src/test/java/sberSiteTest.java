@@ -32,22 +32,46 @@ public class sberSiteTest {
         driver.findElement(By.xpath("//ul[@class='lg-menu__sub-list']//a[text()='Страхование путешественников']")).click();
         Wait<WebDriver> wait = new WebDriverWait(driver, 5, 15000);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[contains(@class,'top_40')]//h2[text()='Страхование путешественников']"))));
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+        driver.findElement(By.xpath("//b[text()='Оформить онлайн']")).click();
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//h2[text()='Страхование путешественников']"))));
+
+        driver.findElement(By.xpath("//h3[contains(text(),'Минимал')]")).click();
+
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        driver.findElement(By.xpath("//b[text()='Оформить онлайн']")).click();
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//h2[text()='Страхование путешественников']"))));
-
-        driver.findElement(By.xpath("//h3[contains(text(),'Минимал')]")).click();
 
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//button[text()='Оформить']")))).click();
 
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//legend[contains(text(),'Застрахованные')]"))));
         driver.findElement(By.id("surname_vzr_ins_0")).sendKeys("Ivan");
         fillField(By.id("surname_vzr_ins_0"),"Ivanushka");
-        
+       // fillField(By.id("birthDate_vzr_ins_0"),"08.07.1994");
+        fillField(By.id("name_vzr_ins_0"),"English");
+
+        driver.findElement(By.id("birthDate_vzr_ins_0")).sendKeys("08.07.1994");
+        driver.findElement(By.id("surname_vzr_ins_0")).click();
+        driver.findElement(By.id("person_birthDate")).sendKeys("08.07.1994");
+        driver.findElement(By.id("surname_vzr_ins_0")).click();
+        //fillField(By.id("person_birthDate"),"08.07.1994");
+        fillField(By.id("person_lastName"),"Василий");
+        fillField(By.id("person_firstName"),"Петрович");
+
+        fillField(By.id("person_middleName"),"Магаданович");
+
+
+        driver.findElement(By.xpath("//label[text()='Женский']")).click();
+
+
 
 
         try {
