@@ -11,8 +11,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class sberSiteTest extends BaseTest {
-    WebDriver driver;
-
+    
     @Test
     public void test() {
 
