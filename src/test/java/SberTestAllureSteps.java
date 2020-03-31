@@ -61,6 +61,8 @@ public class SberTestAllureSteps extends BaseSteps {
         new OformlenieSteps()
                 .stepCheckFields(textMap)
                 .stepDateCheckFields(dateMap)
+                //добавление проверки, чтобы тест свалился
+                //.stepCheckField(TextFieldOformlenieEnum.ЗАСТРАХОВАННЫЙ_ИМЯ,"gjg")
                 .stepCheckError();
 
 

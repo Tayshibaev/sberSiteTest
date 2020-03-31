@@ -4,8 +4,11 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.yandex.qatools.allure.annotations.Attachment;
 import util.TestProperties;
 
 import java.text.SimpleDateFormat;
@@ -71,6 +74,11 @@ public class BaseSteps {
     {
         Assert.assertEquals(expected,
                 driver.findElement(By.id(id)).getAttribute("value"));
+    }
+
+    @Attachment(type = "image/png", value = "Screenshot")
+    public static byte[] takeScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
 }
