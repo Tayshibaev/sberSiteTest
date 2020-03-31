@@ -1,16 +1,19 @@
+package steps;
+
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import util.TestProperties;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-public class BaseTest {
+public class BaseSteps {
 
     protected static WebDriver driver;
     protected static Properties properties = TestProperties.getINSTANCE().getProperties();

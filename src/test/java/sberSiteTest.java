@@ -1,4 +1,5 @@
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
@@ -9,13 +10,15 @@ import pages.StrahovaniePage;
 import pages.ZayavkaStrahPage;
 import Enum.TextFieldOformlenieEnum;
 import Enum.SEX;
+import steps.BaseSteps;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class sberSiteTest extends BaseTest {
+public class sberSiteTest extends BaseSteps {
 
     @Test
+    @Ignore
     public void test() {
 
         Wait<WebDriver> wait = new WebDriverWait(driver, 3, 15000);

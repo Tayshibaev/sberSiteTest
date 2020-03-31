@@ -33,6 +33,6 @@ public class ZayavkaStrahPage {
     }
 
     public void clickOform() {
-        wait.until(ExpectedConditions.visibilityOf(btnOform)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(btnOform)).click();
     }
 }

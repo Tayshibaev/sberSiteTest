@@ -104,12 +104,15 @@ public class OformleniePage {
         switch (name) {
             case "Страхователь":
                 fillFieldDate(birthDatePerson, date);
+                nameVzr.click();
                 break;
             case "Застрахованный":
                 fillFieldDate(birthDateVzr, date);
+                nameVzr.click();
                 break;
             case "Паспорт":
                 fillFieldDate(documentDate, date);
+                nameVzr.click();
                 break;
             default:
                 new AssertionError();
