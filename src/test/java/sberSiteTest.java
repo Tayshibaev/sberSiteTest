@@ -23,17 +23,17 @@ public class sberSiteTest extends BaseSteps {
 
         Wait<WebDriver> wait = new WebDriverWait(driver, 3, 15000);
 
-        MainPage mainPage = new MainPage(driver);
+        MainPage mainPage = new MainPage();
         mainPage.selectMenuItem("Страхование");
         mainPage.selectSubMenuItem("Страхование путешественников");
 
         //Страница страхование
-        StrahovaniePage strPage = new StrahovaniePage(driver);
+        StrahovaniePage strPage = new StrahovaniePage();
         //Оформить онлайн
         strPage.clickButton();
 
         //Страница заявки
-        ZayavkaStrahPage zpage = new ZayavkaStrahPage(driver);
+        ZayavkaStrahPage zpage = new ZayavkaStrahPage();
         //выбор минимального тарифа
         zpage.clickMinimal();
         //Задержка пока кнопка оформление станет кликабельной
@@ -46,7 +46,7 @@ public class sberSiteTest extends BaseSteps {
         zpage.clickOform();
 
         //Ожидаем страницу оформление
-        OformleniePage ofPage = new OformleniePage(driver);
+        OformleniePage ofPage = new OformleniePage();
 
         //Даты рождения
         Calendar dateBirthPeople = new GregorianCalendar(1999,02,13);

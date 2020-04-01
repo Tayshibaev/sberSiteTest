@@ -5,20 +5,29 @@ import ru.yandex.qatools.allure.annotations.Step;
 import Enum.TextFieldOformlenieEnum;
 import Enum.SEX;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
-public class OformlenieSteps extends BaseSteps {
+public class OformlenieSteps {
     OformleniePage page;
 
     public OformlenieSteps() {
-        this.page = new OformleniePage(driver);
+        this.page = new OformleniePage();
     }
 
     @Step("Заполнение поля {0} значением {1}")
     public OformlenieSteps stepFillField(TextFieldOformlenieEnum text,String s)
     {
         page.fillField(text,s);
+        return this;
+    }
+
+    @Step("Заполнение поля {0} значением {1}")
+    public OformlenieSteps stepFillField(String text,String s)
+    {
+        page.fillField(TextFieldOformlenieEnum.valueOf(text),s);
         return this;
     }
 
@@ -33,6 +42,25 @@ public class OformlenieSteps extends BaseSteps {
     public OformlenieSteps stepDateFillField(String text, Date s)
     {
         page.fillDate(text,s);
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return this;
+    }
+
+    @Step("Заполнение поля {0} значением {1}")
+    public OformlenieSteps stepDateFillField(String text, String s)
+    {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+        Date date = null;
+        try {
+            date = formatter.parse(s);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        page.fillDate(text,date);
         try {
             Thread.sleep(300);
         } catch (InterruptedException e) {
@@ -69,6 +97,13 @@ public class OformlenieSteps extends BaseSteps {
         return this;
     }
 
+    @Step("Проверка поля {0} значением {1}")
+    public OformlenieSteps stepCheckField(String text,String s)
+    {
+        page.checkTextFieldValue(TextFieldOformlenieEnum.valueOf(text),s);
+        return this;
+    }
+
     @Step("Проверка текстовых полей: ")
     public OformlenieSteps stepCheckFields(HashMap<TextFieldOformlenieEnum,String> map)
     {
@@ -80,6 +115,20 @@ public class OformlenieSteps extends BaseSteps {
     public OformlenieSteps stepDateCheckField(String text, Date s)
     {
         page.checkDate(text,s);
+        return this;
+    }
+
+    @Step("Заполнение поля {0} значением {1}")
+    public OformlenieSteps stepDateCheckField(String text, String s)
+    {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+        Date date = null;
+        try {
+            date = formatter.parse(s);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        page.checkDate(text,date);
         return this;
     }
 

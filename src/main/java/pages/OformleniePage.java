@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Enum.TextFieldOformlenieEnum;
 import Enum.SEX;
+import steps.BaseSteps;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -59,10 +60,10 @@ public class OformleniePage {
     WebElement btnContinue;
 
 
-    public OformleniePage(WebDriver driver) {
+    public OformleniePage() {
+        this.driver = BaseSteps.getDriver();
         PageFactory.initElements(driver, this);
-        this.driver = driver;
-        new WebDriverWait(driver, 2, 10).until(ExpectedConditions.visibilityOf(title));
+
     }
 
     public void clickContinue() {
@@ -70,6 +71,7 @@ public class OformleniePage {
     }
 
     public void fillField(TextFieldOformlenieEnum textField, String val) {
+        new WebDriverWait(driver, 2, 10).until(ExpectedConditions.visibilityOf(title));
         switch (textField) {
             case ЗАСТРАХОВАННЫЙ_ИМЯ:
                 fillField(nameVzr, val);

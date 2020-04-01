@@ -1,8 +1,9 @@
 package steps;
 
-import org.junit.AfterClass;
+
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -22,7 +23,7 @@ public class BaseSteps {
     protected static Properties properties = TestProperties.getINSTANCE().getProperties();
     protected static String baseUrl;
 
-    @BeforeClass
+    @Before
     public static void setUp() {
 
         switch (properties.getProperty("browser")) {
@@ -45,9 +46,13 @@ public class BaseSteps {
         driver.get(baseUrl);
     }
 
-    @AfterClass
+    @After
     public static void tearDown() {
         driver.quit();
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
     }
 
     public void fillField(By by , String val)

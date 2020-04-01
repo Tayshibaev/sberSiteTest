@@ -1,11 +1,12 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import steps.BaseSteps;
 
 public class StrahovaniePage {
 
@@ -16,12 +17,12 @@ public class StrahovaniePage {
     @FindBy(xpath = "//b[text()='Оформить онлайн']")
     WebElement btn;
 
-    public StrahovaniePage(WebDriver driver){
-        PageFactory.initElements(driver,this);
-        (new WebDriverWait(driver,2,10)).until(ExpectedConditions.visibilityOf(title));
+    public StrahovaniePage(){
+        PageFactory.initElements(BaseSteps.getDriver(),this);
     }
 
     public void clickButton(){
+        (new WebDriverWait(BaseSteps.getDriver(),2,10)).until(ExpectedConditions.visibilityOf(title));
         btn.click();
     }
 }
