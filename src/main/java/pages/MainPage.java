@@ -9,6 +9,7 @@ import steps.BaseSteps;
 
 public class MainPage {
 
+
     //Элемент меню
     @FindBy(xpath = "//div[contains(@class,'lg-menu__row')]")
     WebElement menuItem;
